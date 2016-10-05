@@ -1,0 +1,35 @@
+<html>
+<head>
+	<link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.css'></link>
+	<script src='/angular/angular.js'></script>
+	<script src='/browser/js/app.js'></script>
+	<script src='/highcharts-ng/dist/highcharts-ng.js'></script>
+	<script src="http://code.highcharts.com/highcharts.src.js"></script>
+	<script src='/browser/js/graph.controller.js'></script>
+	<script src='/browser/js/graph.factory.js'></script>
+</head>
+<body ng-app='portfolioStrat'>
+	<div class='container' ng-controller='GraphCtrl'>
+
+		<div class="row">
+			<highchart id="chart1" config="chartConfig" class="span10"></highchart>
+		</div>
+
+		<h3>Enter a new User {{ 100 }}</h3>
+		<div class='well'>
+			<form>
+				<div class='form-group'>
+					<label>First Name</label>
+					<input class='form-control' ng-model='newUser.firstname'/>
+				</div>
+				<div class='form-group'>
+					<label>First Name {{ chartConfig }}</label>
+					<input class='form-control' ng-model='newUser.lastname'/>
+				</div>
+				<button class='btn btn-primary'>Save</button>
+			</form>
+		</div>
+	</div>
+	
+</body>
+</html>
