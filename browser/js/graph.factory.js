@@ -11,6 +11,13 @@ app.factory('GraphFactory', function($http){
 				.then(function(result){
 					return result.data;
 				});
+		},
+		saveChart: function(newChart) {
+			console.log("inside factory");
+			return $http.post("/api/graphs", newChart)
+				.then(function(result){
+					return result.data;
+				})
 		} 
 	};
 });

@@ -1,6 +1,6 @@
 var Promise = require('bluebird');
 var mongoose = require('mongoose');
-var dbURI = process.env.URI || 'mongodb://localhost/portfoliostrat';
+var dbURI = process.env.URI || 'mongodb://localhost/portfolioStratTest';
 
 var Graph = mongoose.model('graph', mongoose.Schema({
 	chartType: String,
