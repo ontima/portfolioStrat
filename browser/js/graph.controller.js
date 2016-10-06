@@ -13,6 +13,8 @@ app.controller('GraphCtrl', function($scope, GraphFactory){
 		GraphFactory.saveChart($scope.newChart)
 			.then(function(response){
 				displayGraph(response);
+				getAllGraphs();
+				$scope.selectedGraph=response._id;
 			})
 	}
 
@@ -43,6 +45,8 @@ app.controller('GraphCtrl', function($scope, GraphFactory){
 	      	type: 'datetime',
 	      	labels: {
 	          format: '{value:%Y-%m-%d}',
+	          rotation: 45,
+	          align: 'left'
 	      		}
 	  		},
 	  		series: dataSeries,
