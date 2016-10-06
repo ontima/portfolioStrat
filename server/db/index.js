@@ -3,11 +3,26 @@ var mongoose = require('mongoose');
 var dbURI = process.env.URI || 'mongodb://localhost/portfolioStratTest';
 
 var Graph = mongoose.model('graph', mongoose.Schema({
-	chartType: {type: String, required: true},
-	dataSeries: {type: Array, required: true},
-	min: {type: Number, required: true},
-	max: {type: Number, required: true},
-	title: {type: String, required: true}
+	chartType: {
+		type: String,
+		required: true
+	},
+	dataSeries: {
+		type: Array,
+		required: true
+	},
+	min: {
+		type: Number,
+		required: true
+	},
+	max: {
+		type: Number,
+		required: true
+	},
+	title: {
+		type: String,
+		required: true
+	}
 }));
 
 var _conn;
