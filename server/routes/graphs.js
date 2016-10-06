@@ -4,7 +4,8 @@ var db = require('../db');
 var Graph = db.models.Graph;
 var randomDate = require('randomDate');
 var dateUtils = require('date-utils');
-var numPoints = 5;
+var numPoints = 12;
+var numSeries = 3;
 
 router.get('/', function(req, res, next){
 	Graph.find({})
@@ -47,13 +48,22 @@ router.post('/', function(req, res, next){
 
 });
 
-function randomIntFromInterval(min,max)
-{
+function randomIntFromInterval(min,max){
     return Math.floor(Math.random()*(max-min+1)+min);
 }
 
-function getDataSeries(min, max, startDate) 
-{
+function getDataSeries(min, max, startDate){
+	var arr = [];
+
+	for (var i=0; i<numSeries; i++) {
+		arr.push({
+			data: getOneSeries(min, max, startDate),
+		});
+	}
+	return arr;
+};
+
+function getOneSeries(min, max, startDate){
 	var arr = [];
 	var date = startDate;
 	for (var i=0; i<numPoints; i++){
@@ -62,7 +72,6 @@ function getDataSeries(min, max, startDate)
 		arr.push([currDate, randomIntFromInterval(min,max)]);
 	}
 	return arr;
-}
-
+};
 
 module.exports = router;
