@@ -14,10 +14,11 @@ function randomIntFromInterval(min,max)
 function getDataSeries(min, max, startDate) 
 {
 	var arr = [];
+	var date = startDate;
 	for (var i=0; i<numPoints; i++){
-		var date = startDate.add({"days": 1}).toYMD('-');
+		var currDate = date.add({"days": 1}).toYMD('-');
 		console.log("curr date: ", date);
-		arr.push([date, randomIntFromInterval(min,max)]);
+		arr.push([currDate, randomIntFromInterval(min,max)]);
 	}
 	return arr;
 }
@@ -28,34 +29,21 @@ router.post('/', function(req, res, next){
 	console.log("startDate: ", startDate);
 	var dataArr = getDataSeries(Number(req.body.min), Number(req.body.max),startDate);
 	console.log("data series: ", dataArr);
-    var chartConfig = {
-        options: {
-            chart: {
-                type: req.body.type
-            }
-        },
-         xAxis: {
-        type: 'datetime',
-        labels: {
-            format: '{value:%Y-%m-%d}',
-            // rotation: 45,
-            // align: 'left'
-        }
-    },
 
-    series: [{
-        data: dataArr,
-        pointStart: Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate()),
-        pointInterval: 24 * 36e5
-    }],
-        title: {
-            text: req.body.title
-        },
+	var newGraph = new Graph({
+		title: req.body.title,
+		min: req.body.min,
+		max: req.body.max,
+		chartType: req.body.type,
+		dataSeries: dataArr
+	});
 
-        loading: false
-    }
-    console.log("chartConfig: ", chartConfig);
-    res.send(chartConfig);
+	newGraph.save()
+		.then(function(response){
+			console.log("response from save: ", response);
+			res.send(response);
+		}, next);
+
 });
 
 

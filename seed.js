@@ -35,9 +35,9 @@ db.connect()
     .then(function () {
         return wipeCollections();
     })
-    .then(function(){
-        return seedGraphs();
-    })
+    // .then(function(){
+    //     return seedGraphs();
+    // })
     .then(function () {
         console.log('Seed successful!');
         process.kill(0);
