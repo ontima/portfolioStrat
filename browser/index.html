@@ -2,13 +2,16 @@
 <head>
 	<link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.css'></link>
 	<script src='/angular/angular.js'></script>
+	<script src='/angular-ui-router/release/angular-ui-router.js'></script>
 	<script src='/browser/js/app.js'></script>
 	<script src='/highcharts-ng/dist/highcharts-ng.js'></script>
 	<script src="http://code.highcharts.com/highcharts.src.js"></script>
 	<script src='/browser/js/graph.controller.js'></script>
 	<script src='/browser/js/graph.factory.js'></script>
+	<script src='/browser/js/graph.state.js'></script>
 </head>
 <body ng-app='portfolioStrat'>
+
 	<div class='container' ng-controller='GraphCtrl'>
 
 		<h3>Add a New Chart</h3>
@@ -16,15 +19,15 @@
 			<form>
 				<div class='form-group'>
 					<label>Min</label>
-					<input class='form-control' ng-model='newChart.min'/>
+					<input class='form-control' ng-model='newChart.min' type="number" required/>
 				</div>
 				<div class='form-group'>
 					<label>Max</label>
-					<input class='form-control' ng-model='newChart.max'/>
+					<input class='form-control' ng-model='newChart.max' type="number" required/>
 				</div>
 				<div class='form-group'>
 					<label>Chart Type</label>
-					  <select name="dropdown" ng-model="newChart.type" class='form-control'>
+					  <select name="dropdown" ng-model="newChart.type" class='form-control' ng-init="newChart.type='line'">
 							<option value="line" selected>Line</option>
 							<option value="scatter">Scatter</option>
 							<option value="bar">Bar</option>
@@ -32,12 +35,11 @@
 				</div>
 				<div class='form-group'>
 					<label>Title</label>
-					<input class='form-control' ng-model='newChart.title'/>
+					<input class='form-control' ng-model='newChart.title'/ required>
 				</div>
 				<button class='btn btn-primary' ng-click='addChart()'>Save</button>
 			</form>
 		</div>
-
 
 		<h3>Select a Saved Chart</h3>
 		<div class='well'>
@@ -50,12 +52,10 @@
 			</form>
 		</div>
 
-
 		<div class="row" ng-show="results">
 			<highchart id="chart1" config="chartConfig" class="span10"></highchart>
 		</div>
 
 	</div>
-	
 </body>
 </html>
