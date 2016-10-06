@@ -11,7 +11,6 @@
 <body ng-app='portfolioStrat'>
 	<div class='container' ng-controller='GraphCtrl'>
 
-
 		<h3>Add a New Chart</h3>
 		<div class='well'>
 			<form>
@@ -38,6 +37,19 @@
 				<button class='btn btn-primary' ng-click='addChart()'>Save</button>
 			</form>
 		</div>
+
+
+		<h3>Select a Saved Chart</h3>
+		<div class='well'>
+			<form>
+				<div class='form-group'>
+					<select ng-model="selectedGraph" ng-change=getGraph()>
+						<option ng-repeat="graph in allGraphs" value="{{graph._id}}">{{graph._id}} --- {{graph.title}}</option>
+					</select>
+				</div>
+			</form>
+		</div>
+
 
 		<div class="row" ng-show="results">
 			<highchart id="chart1" config="chartConfig" class="span10"></highchart>
