@@ -1,7 +1,6 @@
 app.controller('GraphCtrl', function($scope, GraphFactory){
 
 	$scope.getGraph = function(){
-		console.log("getting graph: ", $scope.selectedGraph);
 		GraphFactory.getById($scope.selectedGraph)
 			.then(function(response){
 				displayGraph(response);
@@ -9,7 +8,6 @@ app.controller('GraphCtrl', function($scope, GraphFactory){
 	}
 
 	$scope.addChart = function(){
-		console.log("inside controller: ", $scope.newChart);
 		GraphFactory.saveChart($scope.newChart)
 			.then(function(response){
 				displayGraph(response);
@@ -19,14 +17,11 @@ app.controller('GraphCtrl', function($scope, GraphFactory){
 	}
 
 	displayGraph = function(response) {
-		console.log("controller response: ", response);
-		console.log("response dataSeries: ", response.dataSeries);	
 		var startDate = response.dataSeries[0].data[0][0];
 		//startDate is in yyyy-mm-dd format
 		var startYear = Number(startDate.substring(0,4));
 		var startMonth = Number(startDate.substring(5,7));
 		var startDay = Number(startDate.substring(8));
- 
 
  	  var dataSeries = [];
  	  for (var i=0; i<response.dataSeries.length; i++) {
@@ -61,7 +56,6 @@ app.controller('GraphCtrl', function($scope, GraphFactory){
 		GraphFactory.getAll()
 			.then(function(response){
 				$scope.allGraphs = response;
-				console.log("setting allGraphs: ", response);
 			});
 	};
 

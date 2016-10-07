@@ -10,7 +10,6 @@ var numSeries = 3;
 router.get('/', function(req, res, next){
 	Graph.find({})
 		.then(function(graphs){
-			console.log("get all graphs: ", graphs);
 			res.send(graphs);
 		})
 		.then(null, next);
@@ -26,11 +25,8 @@ router.get('/:id', function(req, res, next){
 
 
 router.post('/', function(req, res, next){
-	console.log("inside router post: ", req.body);
 	var startDate = randomDate(new Date(2015,01,01), new Date(2016,10,05));
-	console.log("startDate: ", startDate);
 	var dataArr = getDataSeries(Number(req.body.min), Number(req.body.max),startDate);
-	console.log("data series: ", dataArr);
 
 	var newGraph = new Graph({
 		title: req.body.title,
@@ -42,10 +38,8 @@ router.post('/', function(req, res, next){
 
 	newGraph.save()
 		.then(function(response){
-			console.log("response from save: ", response);
 			res.send(response);
 		}, next);
-
 });
 
 function randomIntFromInterval(min,max){
@@ -68,7 +62,6 @@ function getOneSeries(min, max, startDate){
 	var date = startDate;
 	for (var i=0; i<numPoints; i++){
 		var currDate = date.add({"days": 1}).toYMD('-');
-		console.log("curr date: ", date);
 		arr.push([currDate, randomIntFromInterval(min,max)]);
 	}
 	return arr;
