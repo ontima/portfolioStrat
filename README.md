@@ -6,7 +6,7 @@ Mongo must running
 
 ### Installing
 
-Download the code and run 'npm init' followed by 'npm start'
+Download the code and run 'npm install' followed by 'npm start'
 Application will be available at http://localhost:3000/
 
 ## Running the tests
