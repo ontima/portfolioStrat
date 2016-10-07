@@ -11,51 +11,6 @@
 	<script src='/browser/js/graph.state.js'></script>
 </head>
 <body ng-app='portfolioStrat'>
-
-	<div class='container' ng-controller='GraphCtrl'>
-
-		<h3>Add a New Chart</h3>
-		<div class='well'>
-			<form>
-				<div class='form-group'>
-					<label>Min</label>
-					<input class='form-control' ng-model='newChart.min' type="number" required/>
-				</div>
-				<div class='form-group'>
-					<label>Max</label>
-					<input class='form-control' ng-model='newChart.max' type="number" required/>
-				</div>
-				<div class='form-group'>
-					<label>Chart Type</label>
-					  <select name="dropdown" ng-model="newChart.type" class='form-control' ng-init="newChart.type='line'">
-							<option value="line" selected>Line</option>
-							<option value="scatter">Scatter</option>
-							<option value="bar">Bar</option>
-						</select>
-				</div>
-				<div class='form-group'>
-					<label>Title</label>
-					<input class='form-control' ng-model='newChart.title'/ required>
-				</div>
-				<button class='btn btn-primary' ng-click='addChart()'>Save</button>
-			</form>
-		</div>
-
-		<h3>Select a Saved Chart</h3>
-		<div class='well'>
-			<form>
-				<div class='form-group'>
-					<select ng-model="selectedGraph" ng-change=getGraph()>
-						<option ng-repeat="graph in allGraphs" value="{{graph._id}}">{{graph._id}} --- {{graph.title}}</option>
-					</select>
-				</div>
-			</form>
-		</div>
-
-		<div class="row" ng-show="results">
-			<highchart id="chart1" config="chartConfig" class="span10"></highchart>
-		</div>
-
-	</div>
+	<div ui-view></div>
 </body>
 </html>
