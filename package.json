@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
     "angular-ui-router": "^0.3.1",
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
@@ -22,6 +23,7 @@
     "mocha": "^3.1.0",
     "mocha-mongoose": "^1.2.0",
     "mongoose": "^4.6.2",
+    "ng-toast": "^2.0.0",
     "path": "^0.12.7",
     "randomdate": "0.0.1",
     "supertest": "^2.0.0",

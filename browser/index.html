@@ -1,6 +1,7 @@
 <html>
 <head>
 	<link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.css'></link>
+	<link rel="stylesheet" href="/ng-toast/dist/ngToast.min.css">
 	<script src='/angular/angular.js'></script>
 	<script src='/angular-ui-router/release/angular-ui-router.js'></script>
 	<script src='/browser/js/app.js'></script>
@@ -9,8 +10,12 @@
 	<script src='/browser/js/graph.controller.js'></script>
 	<script src='/browser/js/graph.factory.js'></script>
 	<script src='/browser/js/graph.state.js'></script>
+	<script src="/angular-animate/angular-animate.min.js"></script>
+	<script src="/angular-sanitize/angular-sanitize.min.js"></script>
+	<script src="/ng-toast/dist/ngToast.min.js"></script>
 </head>
 <body ng-app='portfolioStrat'>
 	<div ui-view></div>
+	<toast></toast>
 </body>
 </html>

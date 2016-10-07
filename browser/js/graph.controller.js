@@ -1,4 +1,4 @@
-app.controller('GraphCtrl', function($scope, GraphFactory){
+app.controller('GraphCtrl', function($scope, GraphFactory, ngToast){
 
 	$scope.getGraph = function(){
 		GraphFactory.getById($scope.selectedGraph)
@@ -8,12 +8,16 @@ app.controller('GraphCtrl', function($scope, GraphFactory){
 	}
 
 	$scope.addChart = function(){
-		GraphFactory.saveChart($scope.newChart)
-			.then(function(response){
-				displayGraph(response);
-				getAllGraphs();
-				$scope.selectedGraph=response._id;
-			})
+		if ($scope.newChart.min >= $scope.newChart.max) {
+			ngToast.create('Max must be greater than min');
+		} else {
+			GraphFactory.saveChart($scope.newChart)
+				.then(function(response){
+					displayGraph(response);
+					getAllGraphs();
+					$scope.selectedGraph=response._id;
+				})
+		}
 	}
 
 	displayGraph = function(response) {
