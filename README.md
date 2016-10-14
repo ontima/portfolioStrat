@@ -1,5 +1,7 @@
 # PortfolioStrat MEAN Programming Exercise
 
+Application is available at: https://oc-portfoliostrat.herokuapp.com/
+
 ### Prerequisities
 
 Mongo must running 
